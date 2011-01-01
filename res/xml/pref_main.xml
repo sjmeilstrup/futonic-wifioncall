@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="@string/app_name"
+	>
+	<PreferenceCategory android:title="@string/PrefCategory_ToggleWifi">
+		<CheckBoxPreference android:key="PrefAutoToggleWifi_WhilePhoneOffHook"
+			android:title="@string/PrefTitle_ToggleWhilePhoneOffHook" android:summary="@string/PrefDesc_ToggleWhilePhoneOffHook"
+			android:defaultValue="false" />
+			<!-- 
+		<CheckBoxPreference android:key="PrefAutoToggleWifi_WhilePhoneCharging"
+			android:title="@string/PrefTitle_ToggleWhileCharging" android:summary="@string/PrefDesc_ToggleWhileCharging"
+			android:defaultValue="false" />
+			-->
+	</PreferenceCategory>
+	<!-- 
+	<PreferenceCategory android:title="@string/PrefCategory_SuggestWifi">
+		<CheckBoxPreference android:key="PrefAutoToggleWifi_SuggestWifiOnDisconnect"
+			android:title="@string/PrefTitle_SuggestWifiOnDisconnect" android:summary="@string/PrefDesc_SuggestWifiOnDisconnect"
+			android:defaultValue="false" />
+	</PreferenceCategory>
+	 -->
+	<PreferenceCategory android:title="@string/PrefCategory_AboutApp">
+		<Preference android:key="PrefAboutApp"
+			android:title="@string/PrefTitle_AboutApp" android:summary="@string/PrefDesc_AboutApp"  />
+	</PreferenceCategory>
+</PreferenceScreen>
