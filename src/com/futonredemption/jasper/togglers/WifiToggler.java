@@ -19,12 +19,18 @@ public class WifiToggler extends AbstractResourceToggler {
 	
 	public void enable() {
 		setTogglePreferenceValue(true);
-		wifiManager.setWifiEnabled(true);
+		
+		if(! isEnabled()) {
+			wifiManager.setWifiEnabled(true);
+		}
 	}
 
 	public void disable() {
 		setTogglePreferenceValue(false);
-		wifiManager.setWifiEnabled(false);
+		
+		if(isEnabled()) {
+			wifiManager.setWifiEnabled(false);
+		}
 	}
 
 	public boolean isEnabled() {

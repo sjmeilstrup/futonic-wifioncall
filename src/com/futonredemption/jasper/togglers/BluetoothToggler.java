@@ -24,12 +24,18 @@ public class BluetoothToggler extends AbstractResourceToggler {
 	
 	public void enable() {
 		setTogglePreferenceValue(true);
-		toggler.enable();
+		
+		if(! isEnabled()) {
+			toggler.enable();
+		}
 	}
 
 	public void disable() {
 		setTogglePreferenceValue(false);
-		toggler.disable();
+		
+		if(isEnabled()) {
+			toggler.disable();
+		}
 	}
 
 	public boolean isEnabled() {
