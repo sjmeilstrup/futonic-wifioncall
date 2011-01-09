@@ -6,20 +6,27 @@
     <string name="notify_suggestwifi_description">Click here to turn on Wifi.</string>
     <string name="notify_suggestwifi_tickertext">No internet connection available. Try using Wifi.</string>
     
-    <string name="PrefCategory_ToggleWifi">Automatically Switch Wifi On/Off...</string>
-	    <string name="PrefTitle_ToggleWhilePhoneOffHook">While Calling</string>
-	    <string name="PrefDesc_ToggleWhilePhoneOffHook">Adjust Wifi while on a call.</string>
+    <string name="PrefCategory_ToggleWifi">Wifi Auto Switching</string>
+	    <string name="PrefTitle_ToggleWifiWhilePhoneOffHook">While Calling</string>
+	    <string name="PrefDesc_ToggleWifiWhilePhoneOffHook">Adjust Wifi while on a call.</string>
 	    
-	    <string name="PrefTitle_ToggleWhileCharging">While Charging</string>
-	    <string name="PrefDesc_ToggleWhileCharging">Adjust Wifi while the phone is charging.</string>
+	    <string name="PrefTitle_ToggleWifiWhileCharging">While Charging</string>
+	    <string name="PrefDesc_ToggleWifiWhileCharging">Adjust Wifi while the phone is charging.</string>
     
     
+    <string name="PrefCategory_ToggleBluetooth">Bluetooth Auto Switching</string>
+	    <string name="PrefTitle_ToggleBtWhilePhoneOffHook">While Calling</string>
+	    <string name="PrefDesc_ToggleBtWhilePhoneOffHook">Adjust Bluetooth while on a call.</string>
+	    
+	    <string name="PrefTitle_ToggleBtWhileCharging">While Charging</string>
+	    <string name="PrefDesc_ToggleBtWhileCharging">Adjust Bluetooth while the phone is charging.</string>
+	    
     <string name="PrefCategory_SuggestWifi">Display Wifi Notification when...</string>
 	    <string name="PrefTitle_SuggestWifiOnDisconnect">Disconnected</string>
 	    <string name="PrefDesc_SuggestWifiOnDisconnect">Display notification to turn Wifi on when there is no network.</string>
 	    
     <string name="PrefCategory_AboutApp">About Application</string>
 	    <string name="PrefTitle_AboutApp">Wifi on Call</string>
-	    <string name="PrefDesc_AboutApp">Version: 1.1</string>
+	    <string name="PrefDesc_AboutApp">Version: 2.0</string>
     
 </resources>

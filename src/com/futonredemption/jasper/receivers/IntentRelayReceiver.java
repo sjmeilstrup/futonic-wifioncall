@@ -10,6 +10,6 @@ public class IntentRelayReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Utility.startWifiToggleService(context, intent);
+		Utility.startTogglerService(context, intent);
 	}
 }

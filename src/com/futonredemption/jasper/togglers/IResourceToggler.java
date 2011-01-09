@@ -1,10 +1,13 @@
-package com.futonredemption.jasper;
+package com.futonredemption.jasper.togglers;
 
-import android.content.Context;
-import android.net.wifi.WifiManager;
+public interface IResourceToggler {
 
-public class WifiManagement {
+	public void enable();
+	public void disable();
+	public boolean isEnabled();
+	public boolean isSupported();
 	
+	/*
 	private static boolean isWifiEnabled(final Context context) {
 		final WifiManager wman = Utility.getWifiManager(context);
 		return wman.isWifiEnabled();
@@ -41,4 +44,5 @@ public class WifiManagement {
 		wman.setWifiEnabled(state);
 		Preferences.AutoToggleWifi.setLastSetWifiState(context, state);
 	}
+	*/
 }
