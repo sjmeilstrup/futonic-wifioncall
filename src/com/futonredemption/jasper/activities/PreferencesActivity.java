@@ -2,8 +2,8 @@ package com.futonredemption.jasper.activities;
 
 import com.futonredemption.jasper.Preferences;
 import com.futonredemption.jasper.R;
-import com.futonredemption.jasper.togglers.BluetoothToggler;
-import com.futonredemption.jasper.togglers.WifiToggler;
+import com.futonredemption.jasper.togglersold.BluetoothToggler;
+import com.futonredemption.jasper.togglersold.WifiToggler;
 
 import android.os.Bundle;
 import android.preference.Preference;

@@ -1,78 +1,47 @@
 package com.futonredemption.jasper.togglers;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import com.futonredemption.jasper.SetOnceVariable;
 
-abstract class AbstractResourceToggler implements IResourceToggler, IPassiveToggler {
+import android.content.Context;
+import android.content.pm.PackageManager;
+
+abstract class AbstractResourceToggler implements IResourceToggler {
 
 	private final Context context;
+	private final PackageManager pm;
 	
-	private final TogglePreferenceKeys preferenceKeys;
-	
-	static class TogglePreferenceKeys {
-		public final String Toggle;
-		public final String ToggleOnPhoneCall;
-		public final String ToggleOnCharging;
-		
-		TogglePreferenceKeys(String toggle, String toggleOnPhoneCall, String toggleOnCharging) {
-			Toggle = toggle;
-			ToggleOnPhoneCall = toggleOnPhoneCall;
-			ToggleOnCharging = toggleOnCharging;
-		}
-	}
-	
-	AbstractResourceToggler(Context context, TogglePreferenceKeys preferenceKeys) {
+	public AbstractResourceToggler(final Context context) {
 		this.context = context;
-		this.preferenceKeys = preferenceKeys;
-	}
-	
-	public boolean allowPassiveToggle() {
-		if(this.isSupported()) {
-			final boolean currentState = this.isEnabled();
-			final boolean lastSetState = this.getTogglePreferenceValue();
-			return currentState == lastSetState;
-		}
-		return false;
-	}
-
-	protected boolean getTogglePreferenceValue() {
-		return getPrefBool(preferenceKeys.Toggle, true);
-	}
-	
-	protected boolean getPrefBool(final String key, final boolean defaultValue) {
-		final SharedPreferences prefs = getPreferences();
-		return prefs.getBoolean(key, defaultValue);
-	}
-	
-	protected void setTogglePreferenceValue(final boolean state) {
-		final Editor editPref = getPreferenceEditor();
-		editPref.putBoolean(preferenceKeys.Toggle, state);
-		editPref.commit();
+		this.pm = context.getPackageManager();
 	}
 	
 	protected Context getContext() {
-		return context;
-	}
-
-	private final SharedPreferences getPreferences() {
-		return PreferenceManager.getDefaultSharedPreferences(context);
+		return this.context;
 	}
 	
-	public final Editor getPreferenceEditor() {
-		return getPreferences().edit();
-	}
-
-	public boolean allowPassiveToggleOnPhoneCall() {
-		return getAllowPassiveOn(preferenceKeys.ToggleOnPhoneCall);
+	public boolean isDisabled() {
+		return ! isEnabled();
 	}
 	
-	public boolean allowPassiveToggleOnCharging() {
-		return getAllowPassiveOn(preferenceKeys.ToggleOnCharging);
+	@SuppressWarnings("unchecked")
+	protected <T> T getSystemService(String serviceName) {
+		return (T)context.getSystemService(serviceName);
 	}
 	
-	protected boolean getAllowPassiveOn(String key) {
-		return getPrefBool(key, false) && allowPassiveToggle();
+	protected boolean hasFeature(final String featureName) {
+		return pm.hasSystemFeature(featureName);
+	}
+	
+	public class IsFeatureAvailableChecker extends SetOnceVariable<Boolean> {
+		private final String featureName;
+		public IsFeatureAvailableChecker(final String featureName) {
+			this.featureName = featureName;
+		}
+		
+		@Override
+		public Boolean onSetVariable() {
+			return hasFeature(featureName);
+		}
+		
 	}
 }

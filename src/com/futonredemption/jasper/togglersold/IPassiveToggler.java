@@ -1,4 +1,4 @@
-package com.futonredemption.jasper.togglers;
+package com.futonredemption.jasper.togglersold;
 
 public interface IPassiveToggler extends IResourceToggler {
 	boolean allowPassiveToggleOnCharging();
