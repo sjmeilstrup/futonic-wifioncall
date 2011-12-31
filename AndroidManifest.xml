@@ -24,12 +24,22 @@
         
 		<service android:name=".services.TogglerService" android:label="@string/app_name" android:icon="@drawable/icon" />
 		
-		<receiver android:name=".receivers.IntentRelayReceiver" android:label="@string/app_name">
+		<receiver android:name=".receivers.ConnectivityChangedReceiver">
             <intent-filter>
             	<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.intent.action.PHONE_STATE" />
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+            </intent-filter>
+        </receiver>
+        
+		<receiver android:name=".receivers.PowerStateChangedReceiver">
+            <intent-filter>
+            	<action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        
+		<receiver android:name=".receivers.PhoneStateChangedReceiver">
+            <intent-filter>
+            	<action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
     </application>
