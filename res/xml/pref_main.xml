@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="@string/app_name"
+	>
+	<PreferenceCategory android:title="@string/PrefCategory_ToggleWifi" android:key="PrefCategory_ToggleWifi">
+		<CheckBoxPreference android:key="PrefAutoToggleWifi_WhilePhoneOffHook"
+			android:title="@string/PrefTitle_ToggleWifiWhilePhoneOffHook" android:summary="@string/PrefDesc_ToggleWifiWhilePhoneOffHook"
+			android:defaultValue="false" />
+		<CheckBoxPreference android:key="PrefWifi_ToggleWhilePhoneCharging"
+			android:title="@string/PrefTitle_ToggleWifiWhileCharging" android:summary="@string/PrefDesc_ToggleWifiWhileCharging"
+			android:defaultValue="false" />
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:title="@string/PrefCategory_ToggleBluetooth" android:key="PrefCategory_ToggleBluetooth">
+		<CheckBoxPreference android:key="PrefBluetooth_ToggleWhilePhoneOffHook"
+			android:title="@string/PrefTitle_ToggleBtWhilePhoneOffHook" android:summary="@string/PrefDesc_ToggleBtWhilePhoneOffHook"
+			android:defaultValue="false" />
+		<CheckBoxPreference android:key="PrefBluetooth_ToggleWhilePhoneCharging"
+			android:title="@string/PrefTitle_ToggleBtWhileCharging" android:summary="@string/PrefDesc_ToggleBtWhileCharging"
+			android:defaultValue="false" />
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/PrefCategory_SuggestWifi" android:key="PrefCategory_SuggestWifi">
+		<CheckBoxPreference android:key="PrefWifi_SuggestOnDisconnect"
+			android:title="@string/PrefTitle_SuggestWifiOnDisconnect" android:summary="@string/PrefDesc_SuggestWifiOnDisconnect"
+			android:defaultValue="false" />
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/PrefCategory_AboutApp">
+		<Preference android:key="PrefAboutApp"
+			android:title="@string/PrefTitle_AboutApp" android:summary="@string/PrefDesc_AboutApp"  />
+	</PreferenceCategory>
+</PreferenceScreen>
