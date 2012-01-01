@@ -1,10 +1,8 @@
 package com.futonredemption.jasper.togglers;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
-import com.futonredemption.jasper.SetOnceVariable;
+import com.futonredemption.jasper.PreferenceHolder;
 
 /** Manages the toggling a wrapped resourced based on implied ownership.
  * Auto-toggling occurs if the app believes that it has taken control ownership by flag setting as to not
@@ -14,20 +12,13 @@ import com.futonredemption.jasper.SetOnceVariable;
 */
 public class PreferencedResourceTogglerWrapper extends AbstractResourceTogglerWrapper {
 
-	private final SetOnceVariable<SharedPreferences> prefs = new SetOnceVariable<SharedPreferences>() {
-		@Override
-		public SharedPreferences onSetVariable() {
-			return PreferenceManager.getDefaultSharedPreferences(context);
-		}
-	};
-	
-	private final Context context;
+	private final PreferenceHolder prefs;
 	private final String statePreferenceName;
 	
 	public PreferencedResourceTogglerWrapper(final Context context, final IResourceToggler toggler, String statePreferenceName) {
 		super(toggler);
-		this.context = context;
 		this.statePreferenceName = statePreferenceName;
+		this.prefs = new PreferenceHolder(context);
 	}
 
 	public boolean isSupported() {
