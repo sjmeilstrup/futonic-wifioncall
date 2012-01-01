@@ -27,11 +27,11 @@ public class TogglerService extends IntentService {
 
 		if(extras != null) {
 			final String command = extras.getString(EXTRA_COMMAND);
+			
 			if(command != null) {
 				if(command.equals(EXTRA_COMMAND_USEINTENT)) {
 					serviceHandler.handleIntent((Intent)extras.getParcelable(EXTRA_INTENT));
-				}
-				else if(command.equals(EXTRA_COMMAND_FORCESTARTWIFI)) {
+				} else if(command.equals(EXTRA_COMMAND_FORCESTARTWIFI)) {
 					serviceHandler.forceStartWifi();
 				}
 			}
