@@ -1,5 +1,6 @@
 package com.futonredemption.jasper;
 
+import com.futonredemption.jasper.services.PhoneOffHookMonitorService;
 import com.futonredemption.jasper.services.TogglerService;
 
 import android.app.NotificationManager;
@@ -36,6 +37,12 @@ public class Utility {
 		final Intent intent = getBatteryState(context);
 		final int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, BatteryManager.BATTERY_STATUS_UNKNOWN);
 		return status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL;
+	}
+	
+	public static void startUpsidedownAutoSpeakerService(final Context context, final Intent intent) {
+		final Intent serviceStart = new Intent(context, PhoneOffHookMonitorService.class);
+		serviceStart.putExtra(TogglerService.EXTRA_INTENT, intent);
+		context.startService(serviceStart);
 	}
 	
 	public static void startTogglerService(final Context context, final Intent intent) {

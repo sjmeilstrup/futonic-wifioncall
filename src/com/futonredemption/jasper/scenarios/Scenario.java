@@ -5,6 +5,8 @@ import com.futonredemption.jasper.SetOnceVariable;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.BatteryManager;
 import android.telephony.TelephonyManager;
 
@@ -28,6 +30,20 @@ public class Scenario {
 		}
 	};
 	
+	private final SetOnceVariable<Boolean> connectivity = new SetOnceVariable<Boolean>() {
+		
+		@Override
+		public Boolean onSetVariable() {
+			ConnectivityManager conmgr = getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo info = conmgr.getActiveNetworkInfo();
+			if(info == null) {
+				return false;
+			} else {
+				return info.isConnectedOrConnecting();
+			}
+		}
+	};
+	
 	private final Context context;
 	
 	public Scenario(final Context context) {
@@ -39,7 +55,7 @@ public class Scenario {
 	}
 	
 	public boolean hasInternetConnection() {
-		return false;
+		return this.connectivity.getValue();
 	}
 	
 	public boolean isCharging() {
