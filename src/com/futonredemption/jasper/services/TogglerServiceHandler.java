@@ -1,5 +1,9 @@
 package com.futonredemption.jasper.services;
 
+import java.util.List;
+
+import com.futonredemption.jasper.TogglerLogicFactory;
+import com.futonredemption.jasper.scenarios.IScenarioListener;
 import com.futonredemption.jasper.scenarios.Scenario;
 import com.futonredemption.jasper.togglers.IResourceToggler;
 import com.futonredemption.jasper.togglers.ResourceTogglerFactory;
@@ -51,6 +55,10 @@ public class TogglerServiceHandler {
 
 	private void handleScenarioChanged() {
 		Scenario scenario = new Scenario(context);
+		List<IScenarioListener> listeners = new TogglerLogicFactory(context).createList();
+		for(IScenarioListener listener : listeners) {
+			listener.onScenarioChanged(scenario);
+		}
 	}
 
 	public void forceStartWifi() {
