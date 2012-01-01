@@ -5,21 +5,23 @@ import android.content.Context;
 import com.futonredemption.jasper.Preferences;
 import com.futonredemption.jasper.togglers.IResourceToggler;
 
-public class WifiScenarioListener implements IScenarioListener {
+public class BluetoothScenarioListener implements IScenarioListener {
 
 	private final IResourceToggler toggler;
 	private final BehaviorHints behavior;
 	
-	public WifiScenarioListener(final Context context, final IResourceToggler toggler) {
+	public BluetoothScenarioListener(final Context context, final IResourceToggler toggler) {
 		this.toggler = toggler;
-		this.behavior = new BehaviorHints(context, Preferences.Wifi.ToggleWhilePhoneOffHook, Preferences.Wifi.ToggleWhilePhoneCharging);
+		this.behavior = new BehaviorHints(context, Preferences.Bluetooth.ToggleWhilePhoneOffHook, Preferences.Bluetooth.ToggleWhilePhoneCharging);
 	}
 	
 	public void onScenarioChanged(final Scenario scenario) {
 		if(behavior.allowToggleOnCharging() && scenario.isCharging()) {
 			toggler.enable();
-		} else if(behavior.allowToggleOnPhoneCall() && scenario.isPhoneOffHookWithNoConnection()) {
+		} else if(behavior.allowToggleOnPhoneCall() && scenario.isPhoneOffHook()) {
 			toggler.enable();
+		} else if(scenario.isPhoneOffHook()) {
+			// Do nothing
 		} else {
 			toggler.disable();
 		}
