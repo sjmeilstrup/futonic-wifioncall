@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Smart Switch</string>
+    <string name="auto_switching_service">Wifi and Bluetooth Switching</string>
+    <string name="upsidedown_speaker">Upsidedown Speaker Mode</string>
     
     <string name="notify_suggestwifi_title">No Connection Available</string>
     <string name="notify_suggestwifi_description">Click here to turn on Wifi.</string>
