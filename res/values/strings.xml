@@ -14,8 +14,7 @@
 	    
 	    <string name="PrefTitle_ToggleWifiWhileCharging">While Charging</string>
 	    <string name="PrefDesc_ToggleWifiWhileCharging">Turn on Wifi while the phone is charging.</string>
-    
-    
+
     <string name="PrefCategory_ToggleBluetooth">Bluetooth Auto Switching</string>
 	    <string name="PrefTitle_ToggleBtWhilePhoneOffHook">While Calling</string>
 	    <string name="PrefDesc_ToggleBtWhilePhoneOffHook">Turn on Bluetooth while on a call.</string>
