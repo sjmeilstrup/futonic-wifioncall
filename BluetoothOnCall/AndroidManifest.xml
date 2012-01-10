@@ -17,7 +17,9 @@
         android:debuggable="false"
         android:enabled="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:process="jasper"
+        android:sharedUserId="futonredemption">
         <activity
             android:name="com.futonredemption.jasper.activities.PreferencesActivity"
             android:enabled="true"
