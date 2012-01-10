@@ -2,23 +2,17 @@ package com.futonredemption.jasper.services;
 
 import java.util.List;
 
-import com.futonredemption.jasper.R;
 import com.futonredemption.jasper.TogglerLogicFactory;
-import com.futonredemption.jasper.Utility;
 import com.futonredemption.jasper.scenarios.IScenarioListener;
 import com.futonredemption.jasper.scenarios.Scenario;
 import com.futonredemption.jasper.togglers.IResourceToggler;
 import com.futonredemption.jasper.togglers.ResourceTogglerFactory;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 
 public class TogglerServiceHandler {
 
-	private static final int NOTIFYID_SUGGESTWIFI = 1;
+	//private static final int NOTIFYID_SUGGESTWIFI = 1;
 	private final Context context;
 	
 	public TogglerServiceHandler(final Context context) {
@@ -42,7 +36,7 @@ public class TogglerServiceHandler {
 		IResourceToggler wifiToggler = factory.getWifi();
 		wifiToggler.enable();
 	}
-	
+	/*
 	public void displaySuggestWifiNotification() {
 		final NotificationManager notifier = Utility.getNotificationManager(context);
 		
@@ -62,4 +56,5 @@ public class TogglerServiceHandler {
 
 		notifier.notify(NOTIFYID_SUGGESTWIFI, suggestWifiNotification);
 	}
+	*/
 }
