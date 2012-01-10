@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Wifi on Call</string>
 
-    <string name="hello">Hello World!</string>
-    <string name="app_name">WifiOnCall</string>
-
+    <string name="PrefCategory_AboutApp">About Application</string>
+	    <string name="PrefTitle_AboutApp">@string/app_name</string>
+	    <string name="PrefDesc_AboutApp">Version: 2.0</string>
+    
 </resources>

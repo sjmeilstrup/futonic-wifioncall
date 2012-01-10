@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.futonredemption.jasper"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="20"
+    android:versionName="2.0" >
 
-    <uses-sdk android:minSdkVersion="15" />
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
+        android:debuggable="true"
+        android:enabled="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
+        <activity
+            android:name=".activities.PreferencesActivity"
+            android:enabled="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:noHistory="true"
+            android:theme="@style/ActivityDefault" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.futonredemption.jasper.services.TogglerService"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/auto_switching_service" />
+        <!-- 
+        <service
+            android:name="com.futonredemption.jasper.services.PhoneOffHookMonitorService"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/upsidedown_speaker" />
+	 -->
+        <receiver android:name="com.futonredemption.jasper.receivers.ConnectivityChangedReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.futonredemption.jasper.receivers.PowerStateChangedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.futonredemption.jasper.receivers.PhoneStateChangedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
