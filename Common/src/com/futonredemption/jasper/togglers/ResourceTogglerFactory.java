@@ -2,6 +2,9 @@ package com.futonredemption.jasper.togglers;
 
 import org.beryl.app.AndroidVersion;
 
+import com.futonredemption.jasper.Utility;
+
+import android.Manifest;
 import android.content.Context;
 
 public class ResourceTogglerFactory {
@@ -16,11 +19,15 @@ public class ResourceTogglerFactory {
 	}
 	
 	public IResourceToggler getWifi() {
-		return wrapToggler(new WifiToggler(context), TYPE_WIFI);
+		if(Utility.hasPermission(context, Manifest.permission.CHANGE_WIFI_STATE)) {
+			return wrapToggler(new WifiToggler(context), TYPE_WIFI);
+		} else {
+			return new NotSupportedResourceToggler();
+		}
 	}
 	
 	public IResourceToggler getBluetooth() {
-		if(AndroidVersion.isEclairOrHigher()) {
+		if(AndroidVersion.isEclairOrHigher() && Utility.hasPermission(context, Manifest.permission.BLUETOOTH_ADMIN)) {
 			return wrapToggler(new BluetoothToggler(context), TYPE_BLUETOOTH);
 		} else {
 			return new NotSupportedResourceToggler();

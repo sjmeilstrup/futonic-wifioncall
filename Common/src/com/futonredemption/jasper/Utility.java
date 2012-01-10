@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.telephony.TelephonyManager;
@@ -56,5 +57,13 @@ public class Utility {
 		final Intent serviceStart = new Intent(context, TogglerService.class);
 		serviceStart.putExtra(TogglerService.EXTRA_COMMAND, TogglerService.EXTRA_COMMAND_FORCESTARTWIFI);
 		return serviceStart;
+	}
+	
+	public static boolean hasPermission(final Context context, final String permissionName) {
+		boolean result = false;
+		final PackageManager pkgman = context.getPackageManager();
+		final int flag = pkgman.checkPermission(permissionName, context.getPackageName());
+		result = (flag == PackageManager.PERMISSION_GRANTED);
+		return result;
 	}
 }
