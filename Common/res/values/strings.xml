@@ -4,6 +4,7 @@
     <string name="auto_switching_service">Wifi and Bluetooth Switching</string>
     <string name="upsidedown_speaker">Upsidedown Speaker Mode</string>
     
+    <string name="feature_not_supported">Feature Not Supported</string>
     <string name="notify_suggestwifi_title">No Connection Available</string>
     <string name="notify_suggestwifi_description">Click here to turn on Wifi.</string>
     <string name="notify_suggestwifi_tickertext">No internet connection available. Try using Wifi.</string>

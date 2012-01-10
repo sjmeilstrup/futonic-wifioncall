@@ -43,7 +43,10 @@ public class PreferencesActivity extends PreferenceActivity {
 	private void disablePreference(String categoryKey) {
 		final PreferenceScreen screen = this.getPreferenceScreen();
 		final Preference preference = screen.findPreference(categoryKey);
-		preference.setSelectable(false);
-		preference.setEnabled(false);
+		if(preference != null) {
+			preference.setSelectable(false);
+			preference.setEnabled(false);
+			preference.setTitle(getText(R.string.feature_not_supported));
+		}
 	}
 }
