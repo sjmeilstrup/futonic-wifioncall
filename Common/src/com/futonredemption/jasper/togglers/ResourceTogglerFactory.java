@@ -3,6 +3,9 @@ package com.futonredemption.jasper.togglers;
 import org.beryl.app.AndroidVersion;
 
 import com.futonredemption.jasper.Utility;
+import com.futonredemption.jasper.receivers.ConnectivityChangedReceiver;
+import com.futonredemption.jasper.receivers.PhoneStateChangedReceiver;
+import com.futonredemption.jasper.receivers.PowerStateChangedReceiver;
 
 import android.Manifest;
 import android.content.Context;
@@ -32,6 +35,23 @@ public class ResourceTogglerFactory {
 		} else {
 			return new NotSupportedResourceToggler();
 		}
+	}
+	
+	public IResourceToggler getConnectivityChangedReceiver() {
+		if(Utility.hasPermission(context, Manifest.permission.CHANGE_WIFI_STATE)) {
+			return new ComponentToggler(context, ConnectivityChangedReceiver.class);
+		} else {
+			return new NotSupportedResourceToggler();
+		}
+	}
+	
+	public IResourceToggler getPhoneStateChangedReceiver() {
+		// TODO: Only return when using Telephony services?
+		return new ComponentToggler(context, PhoneStateChangedReceiver.class);
+	}
+	
+	public IResourceToggler getPowerStateChangedReceiver() {
+		return new ComponentToggler(context, PowerStateChangedReceiver.class);
 	}
 	
 	/** Wraps the raw toggler with standardized business logic. */
