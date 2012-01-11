@@ -42,6 +42,5 @@ abstract class AbstractResourceToggler implements IResourceToggler {
 		public Boolean onSetVariable() {
 			return hasFeature(featureName);
 		}
-		
 	}
 }
