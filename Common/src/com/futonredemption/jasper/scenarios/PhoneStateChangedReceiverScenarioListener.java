@@ -17,7 +17,7 @@ public class PhoneStateChangedReceiverScenarioListener implements IScenarioListe
 	}
 	
 	public void onScenarioChanged(final Scenario scenario) {
-		if((wifiBehavior.allowToggleOnPhoneCall() || bluetoothBehavior.allowToggleOnPhoneCall()) && scenario.isPhoneOffHook()) {
+		if((wifiBehavior.allowToggleOnPhoneCall() || bluetoothBehavior.allowToggleOnPhoneCall())) {
 			toggler.enable();
 		} else {
 			toggler.disable();
