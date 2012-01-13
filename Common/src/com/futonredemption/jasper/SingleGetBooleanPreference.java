@@ -1,8 +1,10 @@
 package com.futonredemption.jasper;
 
+import org.beryl.util.Lazy;
+
 import android.content.Context;
 
-public class SingleGetBooleanPreference extends SetOnceVariable<Boolean> {
+public class SingleGetBooleanPreference extends Lazy<Boolean> {
 
 	private final PreferenceHolder prefs;
 	private final String key;
@@ -19,7 +21,7 @@ public class SingleGetBooleanPreference extends SetOnceVariable<Boolean> {
 	}
 
 	@Override
-	public Boolean onSetVariable() {
-		return prefs.getValue().getBoolean(key, defValue);
+	public Boolean onSet() {
+		return prefs.get().getBoolean(key, defValue);
 	}
 }

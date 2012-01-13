@@ -65,10 +65,10 @@ public class PreferencedResourceTogglerWrapper extends AbstractResourceTogglerWr
 	}
 	
 	protected boolean getPreferenceValue() {
-		return prefs.getValue().getBoolean(statePreferenceName, false);
+		return prefs.get().getBoolean(statePreferenceName, false);
 	}
 	
 	protected void setPreferenceValue(boolean newValue) {
-		prefs.getValue().edit().putBoolean(statePreferenceName, newValue).commit();
+		prefs.get().edit().putBoolean(statePreferenceName, newValue).commit();
 	}
 }

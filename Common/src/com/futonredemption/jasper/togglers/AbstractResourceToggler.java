@@ -1,6 +1,6 @@
 package com.futonredemption.jasper.togglers;
 
-import com.futonredemption.jasper.SetOnceVariable;
+import org.beryl.util.Lazy;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -32,14 +32,14 @@ abstract class AbstractResourceToggler implements IResourceToggler {
 		return pm.hasSystemFeature(featureName);
 	}
 	
-	public class IsFeatureAvailableChecker extends SetOnceVariable<Boolean> {
+	public class IsFeatureAvailableChecker extends Lazy<Boolean> {
 		private final String featureName;
 		public IsFeatureAvailableChecker(final String featureName) {
 			this.featureName = featureName;
 		}
 		
 		@Override
-		public Boolean onSetVariable() {
+		public Boolean onSet() {
 			return hasFeature(featureName);
 		}
 	}

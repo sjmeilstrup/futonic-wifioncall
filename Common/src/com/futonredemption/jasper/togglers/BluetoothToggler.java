@@ -1,6 +1,6 @@
 package com.futonredemption.jasper.togglers;
 
-import com.futonredemption.jasper.SetOnceVariable;
+import org.beryl.util.Lazy;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 
 class BluetoothToggler extends AbstractResourceToggler {
 
-	private final SetOnceVariable<Boolean> isBluetoothSupported = new IsFeatureAvailableChecker(PackageManager.FEATURE_BLUETOOTH);
+	private final Lazy<Boolean> isBluetoothSupported = new IsFeatureAvailableChecker(PackageManager.FEATURE_BLUETOOTH);
 	private final BluetoothAdapter adapter;
 	
 	public BluetoothToggler(final Context context) {
@@ -17,7 +17,7 @@ class BluetoothToggler extends AbstractResourceToggler {
 	}
 
 	public boolean isSupported() {
-		return adapter != null && isBluetoothSupported.getValue();
+		return adapter != null && isBluetoothSupported.get();
 	}
 
 	public boolean isEnabled() {
