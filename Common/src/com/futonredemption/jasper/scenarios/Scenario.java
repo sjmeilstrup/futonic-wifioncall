@@ -74,4 +74,9 @@ public class Scenario {
 	protected <T> T getSystemService(String serviceName) {
 		return (T)context.getSystemService(serviceName);
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("PhoneOffHook= %s, ConnectivityState= %s, IsCharging= %s", phoneOffHook.get(), connectivity.get(), batteryCharging.get());
+	}
 }

@@ -1,5 +1,7 @@
 package com.futonredemption.jasper.services;
 
+import com.futonredemption.jasper.Debugging;
+
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +27,8 @@ public class TogglerService extends IntentService {
 		final Bundle extras = intent.getExtras();
 		final TogglerServiceHandler serviceHandler = new TogglerServiceHandler(this);
 
+		Debugging.log("Running TogglerService");
+		
 		if(extras != null) {
 			final String command = extras.getString(EXTRA_COMMAND);
 			
