@@ -40,7 +40,7 @@ public class ComponentToggler extends AbstractResourceToggler {
 	}
 	
 	public boolean disable() {
-		pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0);
+		pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 		return true;
 	}
 

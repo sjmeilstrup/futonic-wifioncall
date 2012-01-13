@@ -2,6 +2,7 @@ package com.futonredemption.jasper.services;
 
 import java.util.List;
 
+import com.futonredemption.jasper.Debugging;
 import com.futonredemption.jasper.TogglerLogicFactory;
 import com.futonredemption.jasper.scenarios.IScenarioListener;
 import com.futonredemption.jasper.scenarios.Scenario;
@@ -20,11 +21,13 @@ public class TogglerServiceHandler {
 	}
 
 	public void handleIntent() {
+		Debugging.log("Handling scenario change.");
 		handleScenarioChanged();
 	}
 	
 	private void handleScenarioChanged() {
 		Scenario scenario = new Scenario(context);
+		Debugging.log("Scenario: " + scenario.toString());
 		List<IScenarioListener> listeners = new TogglerLogicFactory(context).createList();
 		for(IScenarioListener listener : listeners) {
 			listener.onScenarioChanged(scenario);
