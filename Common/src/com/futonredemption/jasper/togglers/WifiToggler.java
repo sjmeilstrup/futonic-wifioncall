@@ -1,6 +1,6 @@
 package com.futonredemption.jasper.togglers;
 
-import com.futonredemption.jasper.SetOnceVariable;
+import org.beryl.util.Lazy;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -9,7 +9,7 @@ import android.net.wifi.WifiManager;
 class WifiToggler extends AbstractResourceToggler {
 
 	private final WifiManager wifiManager;
-	private final SetOnceVariable<Boolean> isWifiSupported = new IsFeatureAvailableChecker(PackageManager.FEATURE_WIFI);
+	private final Lazy<Boolean> isWifiSupported = new IsFeatureAvailableChecker(PackageManager.FEATURE_WIFI);
 	
 	public WifiToggler(final Context context) {
 		super(context);
@@ -17,7 +17,7 @@ class WifiToggler extends AbstractResourceToggler {
 	}
 
 	public boolean isSupported() {
-		return isWifiSupported.getValue();
+		return isWifiSupported.get();
 	}
 
 	public boolean isEnabled() {

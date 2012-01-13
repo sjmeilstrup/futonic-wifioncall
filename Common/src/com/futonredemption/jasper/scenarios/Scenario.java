@@ -1,6 +1,6 @@
 package com.futonredemption.jasper.scenarios;
 
-import com.futonredemption.jasper.SetOnceVariable;
+import org.beryl.util.Lazy;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,28 +12,28 @@ import android.telephony.TelephonyManager;
 
 public class Scenario {
 
-	private final SetOnceVariable<Boolean> phoneOffHook = new SetOnceVariable<Boolean>() {
+	private final Lazy<Boolean> phoneOffHook = new Lazy<Boolean>() {
 		@Override
-		public Boolean onSetVariable() {
+		public Boolean onSet() {
 			TelephonyManager manager = getSystemService(Context.TELEPHONY_SERVICE);
 			return manager.getCallState() != TelephonyManager.CALL_STATE_IDLE;
 		}
 	};
 	
-	private final SetOnceVariable<Boolean> batteryCharging = new SetOnceVariable<Boolean>() {
+	private final Lazy<Boolean> batteryCharging = new Lazy<Boolean>() {
 		
 		@Override
-		public Boolean onSetVariable() {
+		public Boolean onSet() {
 			final Intent intent = getBatteryState();
 			final int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, BatteryManager.BATTERY_STATUS_UNKNOWN);
 			return status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL;
 		}
 	};
 	
-	private final SetOnceVariable<Boolean> connectivity = new SetOnceVariable<Boolean>() {
+	private final Lazy<Boolean> connectivity = new Lazy<Boolean>() {
 		
 		@Override
-		public Boolean onSetVariable() {
+		public Boolean onSet() {
 			ConnectivityManager conmgr = getSystemService(Context.CONNECTIVITY_SERVICE);
 			NetworkInfo info = conmgr.getActiveNetworkInfo();
 			if(info == null) {
@@ -51,15 +51,15 @@ public class Scenario {
 	}
 	
 	public boolean isPhoneOffHook() {
-		return this.phoneOffHook.getValue();
+		return this.phoneOffHook.get();
 	}
 	
 	public boolean hasInternetConnection() {
-		return this.connectivity.getValue();
+		return this.connectivity.get();
 	}
 	
 	public boolean isCharging() {
-		return batteryCharging.getValue();
+		return batteryCharging.get();
 	}
 	
 	public boolean isPhoneOffHookWithNoConnection() {

@@ -1,7 +1,8 @@
 package com.futonredemption.jasper.scenarios;
 
+import org.beryl.util.Lazy;
+
 import com.futonredemption.jasper.PreferenceHolder;
-import com.futonredemption.jasper.SetOnceVariable;
 
 import android.content.Context;
 
@@ -12,16 +13,16 @@ public class BehaviorHints {
 	
 	private final PreferenceHolder prefMan;
 	
-	private final SetOnceVariable<Boolean> phoneOffHookHint = new SetOnceVariable<Boolean>() {
+	private final Lazy<Boolean> phoneOffHookHint = new Lazy<Boolean>() {
 		@Override
-		public Boolean onSetVariable() {
+		public Boolean onSet() {
 			return getPreferenceBoolean(phoneOffHookHintPreference);
 		}
 	};
 	
-	private final SetOnceVariable<Boolean> deviceChargingHint = new SetOnceVariable<Boolean>() {
+	private final Lazy<Boolean> deviceChargingHint = new Lazy<Boolean>() {
 		@Override
-		public Boolean onSetVariable() {
+		public Boolean onSet() {
 			return getPreferenceBoolean(deviceChargingHintPreference);
 		}
 	};
@@ -34,14 +35,14 @@ public class BehaviorHints {
 	}
 	
 	public boolean allowToggleOnCharging() {
-		return this.deviceChargingHint.getValue();
+		return this.deviceChargingHint.get();
 	}
 	
 	public boolean allowToggleOnPhoneCall() {
-		return this.phoneOffHookHint.getValue();
+		return this.phoneOffHookHint.get();
 	}
 	
 	protected boolean getPreferenceBoolean(String preferenceKey) {
-		return prefMan.getValue().getBoolean(preferenceKey, false);
+		return prefMan.get().getBoolean(preferenceKey, false);
 	}
 }

@@ -1,6 +1,6 @@
 package com.futonredemption.jasper.togglers;
 
-import com.futonredemption.jasper.SetOnceVariable;
+import org.beryl.util.Lazy;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -13,15 +13,15 @@ public class ComponentToggler extends AbstractResourceToggler {
 
 	private final PackageManager pm;
 	private final ComponentName componentName;
-	private final SetOnceVariable<Boolean> defaultEnablement;
+	private final Lazy<Boolean> defaultEnablement;
 	public ComponentToggler(final Context context, Class<? extends BroadcastReceiver> clazz) {
 		super(context);
 		this.pm = context.getPackageManager();
 		this.componentName = new ComponentName(context, clazz);
-		defaultEnablement = new SetOnceVariable<Boolean>() {
+		defaultEnablement = new Lazy<Boolean>() {
 
 			@Override
-			public Boolean onSetVariable() {
+			public Boolean onSet() {
 				boolean result = false;
 				try {
 					final ComponentInfo info = pm.getActivityInfo(componentName, 0);
@@ -61,7 +61,7 @@ public class ComponentToggler extends AbstractResourceToggler {
 				return true;
 			}
 			case PackageManager.COMPONENT_ENABLED_STATE_DEFAULT: {
-				return defaultEnablement.getValue();
+				return defaultEnablement.get();
 			}
 		}
 		
