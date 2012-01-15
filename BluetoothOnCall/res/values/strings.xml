@@ -2,6 +2,14 @@
 <resources>
     <string name="app_name">Bluetooth on Call</string>
 
+    
+    <string name="PrefCategory_ToggleBluetooth">Bluetooth Auto Switching</string>
+	    <string name="PrefTitle_ToggleBtWhilePhoneOffHook">While Calling</string>
+	    <string name="PrefDesc_ToggleBtWhilePhoneOffHook">Turn on Bluetooth while on a call.</string>
+	    
+	    <string name="PrefTitle_ToggleBtWhileCharging">While Charging</string>
+	    <string name="PrefDesc_ToggleBtWhileCharging">Turn on Bluetooth while the phone is charging.</string>
+	    
     <string name="PrefCategory_AboutApp">About Application</string>
 	    <string name="PrefTitle_AboutApp">@string/app_name</string>
 	    <string name="PrefDesc_AboutApp">Version: 2.0</string>
