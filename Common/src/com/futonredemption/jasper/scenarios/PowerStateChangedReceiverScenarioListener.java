@@ -17,7 +17,7 @@ public class PowerStateChangedReceiverScenarioListener implements IScenarioListe
 	}
 	
 	public void onScenarioChanged(final Scenario scenario) {
-		if((wifiBehavior.allowToggleOnCharging() || bluetoothBehavior.allowToggleOnCharging())) {
+		if((wifiBehavior.allowToggleOnCharging() || bluetoothBehavior.allowToggleOnCharging()) || scenario.isCharging()) {
 			toggler.enable();
 		} else {
 			toggler.disable();

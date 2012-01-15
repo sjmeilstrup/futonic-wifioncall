@@ -18,7 +18,7 @@ public class WifiScenarioListener implements IScenarioListener {
 	public void onScenarioChanged(final Scenario scenario) {
 		if(behavior.allowToggleOnCharging() && scenario.isCharging()) {
 			toggler.enable();
-		} else if(behavior.allowToggleOnPhoneCall() && scenario.isPhoneOffHookWithNoConnection()) {
+		} else if(behavior.allowToggleOnPhoneCall() && scenario.isPhoneOffHook()) {
 			toggler.enable();
 		} else {
 			toggler.disable();
