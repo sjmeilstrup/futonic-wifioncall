@@ -1,6 +1,6 @@
 package com.futonredemption.jasper.togglers;
 
-import org.beryl.util.Lazy;
+import org.beryl.Lazy;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
