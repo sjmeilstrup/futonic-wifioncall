@@ -1,6 +1,6 @@
 package com.futonredemption.jasper.scenarios;
 
-import org.beryl.util.Lazy;
+import org.beryl.Lazy;
 
 import com.futonredemption.jasper.PreferenceHolder;
 
